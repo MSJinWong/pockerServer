@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.util.HashMap;
 
-
 public class Script {
 	public Script(){
 		
@@ -42,6 +41,44 @@ public class Script {
 		}else{
 			socket.sendToName(target, "result=talk&msg=用户【"+socket.getUser().getName()+"】:"+msg);
 		}
+	}
+	
+	/**
+	 * 看牌
+	 * type=look
+	 */
+	public static void look(HashMap<String,String> hashScript,SampleSocket socket){
+//		String target = hashScript.get("target");
+//		String msg = hashScript.get("msg");
+//		if(target == null)return;
+//		if(target.equals("all")){
+//			socket.sendToAll("result=talk&msg=你是王炸");
+		Player[] players = {new Player(socket.getUserList())
+		};
+				
+		//2.创建一个新的扑克游戏（利用这四个准备好的玩家）
+		PokeGame game = new PokeGame(players);
+
+		//3.游戏自动给每个玩家发三张纸牌
+		game.autoDispatchCard();
+
+		//4.游戏判断哪个玩家赢
+		Player winner = game.getWinner();
+
+		//5.输出每个玩家的信息和胜利者的信息
+		System.out.println("======扑克游戏========");
+		game.showAllPlayersInfo(); 
+		System.out.println(winner.getName()+"赢啦"); 
+		game.showAllPlayersMoney();
+		System.out.println("======扑克游戏========");	
+		
+		
+		socket.sendToSelf("result=talk&msg="+winner.getName());
+//		}else{
+///			socket.sendToName(target, "result=talk&msg=用户【"+socket.getUser().getName()+"】:"+msg);
+//			socket.sendToSelf("result=talK&msg=你的牌是王炸");
+//		}
+	
 	}
 	/**
 	 * 加入坦克

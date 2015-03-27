@@ -311,9 +311,10 @@ class PokeGame{
 		for(int i=0;i<3;i++){
 			for(int j=0;j<4;j++){
 				players[j].getCards()[i] = wc.randomDispatchCard();
+				System.out.println(players[j]+","+players[j].getCards()[i]);
 			}
 		}
-		sortEveryPlayerCards();
+		sortEveryPlayerCards();		
 	}
 	
 	//计算某个玩家的牌所能获得的点数	
@@ -409,6 +410,7 @@ class PokeGame{
 	private void sortEveryPlayerCards(){
 		for(int i=0;i<4;i++){
 			Arrays.sort(players[i].getCards());
+			
 		}
 	}
 	
@@ -437,7 +439,7 @@ class PokeGame{
 }
 
 public class Control{
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		//1.创造四个玩扑克游戏的玩家
 		Player[] players = {new Player("张三",10000),
 							new Player("李四",20000),
@@ -460,6 +462,6 @@ public class Control{
 		System.out.println(winner.getName()+"赢啦"); 
 		game.showAllPlayersMoney();
 		System.out.println("======扑克游戏========");
-	}
+	}*/
 }
 

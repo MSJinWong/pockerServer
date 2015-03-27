@@ -53,6 +53,7 @@ public class SampleSocket implements WebSocket,WebSocket.OnTextMessage{
 		this.sendToAll("result=removeuser&name="+this.getUser().getName());
     	this.sendToAll("result=talk&msg=【"+this.getUser().getName()+"】下线");
     }
+    
     public String getUserList(){
     	String result = "";
     	String add = "";
@@ -62,6 +63,7 @@ public class SampleSocket implements WebSocket,WebSocket.OnTextMessage{
 		}
     	return result;
     }
+    
     public void sendToSelf(String value){
     	try {
 			this.connection.sendMessage(value);
@@ -69,6 +71,7 @@ public class SampleSocket implements WebSocket,WebSocket.OnTextMessage{
 			e.printStackTrace();
 		}
     }
+    
     public void sendToName(String name,String value){
     	try {
     		for (SampleSocket socket : connections_set) {
@@ -81,6 +84,7 @@ public class SampleSocket implements WebSocket,WebSocket.OnTextMessage{
 			e.printStackTrace();
 		}
     }
+    
     public void sendToAll(String value){
     	System.out.println("sendToAll value = "+value);
     	try {
@@ -91,6 +95,7 @@ public class SampleSocket implements WebSocket,WebSocket.OnTextMessage{
 			e.printStackTrace();
 		}
     }
+    
     public void onMessage(String msg) {
     	System.out.println("msg="+msg);
     	HashMap<String,String> result = strToHash(msg);
@@ -118,6 +123,9 @@ public class SampleSocket implements WebSocket,WebSocket.OnTextMessage{
     		case "shoot":
     			Script.shoot(result,this);
     			break;
+    		case "look":
+    			Script.look(result, this);;
+    			break;    			
     	}
         /*for (SampleSocket socket : connections_set) {
     		
