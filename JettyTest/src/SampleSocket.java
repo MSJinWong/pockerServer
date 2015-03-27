@@ -124,8 +124,14 @@ public class SampleSocket implements WebSocket,WebSocket.OnTextMessage{
     			Script.shoot(result,this);
     			break;
     		case "look":
-    			Script.look(result, this);;
-    			break;    			
+    			Script.look(result, this);
+    			break; 
+    		case "abandon":
+    			Script.abandon(result, this);
+    			break;
+    		case "follow":
+    			Script.follow(result, this);
+    			break;
     	}
         /*for (SampleSocket socket : connections_set) {
     		

@@ -43,6 +43,17 @@ public class Script {
 		}
 	}
 	
+	public static void abandon(HashMap<String,String> hashScript,SampleSocket socket){
+		
+			socket.sendToAll("result=talk&msg=用户【"+socket.getUser().getName()+"】这个二货已经把牌扔掉了！");
+		
+	}
+	public static void follow(HashMap<String,String> hashScript,SampleSocket socket){
+		
+		socket.sendToAll("result=talk&msg=用户【"+socket.getUser().getName()+"】这个二货已经把分加到了20！");
+	
+}
+	
 	/**
 	 * 看牌
 	 * type=look
@@ -53,7 +64,7 @@ public class Script {
 //		if(target == null)return;
 //		if(target.equals("all")){
 //			socket.sendToAll("result=talk&msg=你是王炸");
-		Player[] players = {new Player(socket.getUserList())
+	/*	Player[] players = {new Player(socket.getUserList())
 		};
 				
 		//2.创建一个新的扑克游戏（利用这四个准备好的玩家）
@@ -70,12 +81,12 @@ public class Script {
 		game.showAllPlayersInfo(); 
 		System.out.println(winner.getName()+"赢啦"); 
 		game.showAllPlayersMoney();
-		System.out.println("======扑克游戏========");	
+		System.out.println("======扑克游戏========");	*/
 		
 		
-		socket.sendToSelf("result=talk&msg="+winner.getName());
+		socket.sendToSelf("result=talk&msg=你是同花顺");
 //		}else{
-///			socket.sendToName(target, "result=talk&msg=用户【"+socket.getUser().getName()+"】:"+msg);
+//			socket.sendToName(target, "result=talk&msg=用户【"+socket.getUser().getName()+"】:"+msg);
 //			socket.sendToSelf("result=talK&msg=你的牌是王炸");
 //		}
 	
